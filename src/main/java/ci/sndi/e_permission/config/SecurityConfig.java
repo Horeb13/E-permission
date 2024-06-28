@@ -1,4 +1,4 @@
-package ci.sndi.e_permission;
+package ci.sndi.e_permission.config;
 
 
 import org.springframework.context.annotation.Bean;
