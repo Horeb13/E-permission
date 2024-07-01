@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class PieceJointe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Pièce_jointe")
+    @Column(name = "Id_Piece_jointe")
     private Long id;
 
     @Column(name = "Nom_du_fichier")

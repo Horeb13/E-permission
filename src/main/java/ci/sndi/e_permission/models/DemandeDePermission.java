@@ -69,7 +69,7 @@ public class DemandeDePermission {
     @JoinColumn(name = "Id_utilisateur",  nullable = false)
     private Utilisateur utilisateur;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "demandeDePermission", cascade = CascadeType.ALL)
     @Builder.Default
     private List < PieceJointe > piecesJointes =  new ArrayList<>();
 

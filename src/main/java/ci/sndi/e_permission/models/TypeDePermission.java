@@ -55,7 +55,7 @@ public class TypeDePermission {
     @Column(name = "MODIFIE_PAR")
     private String modifiePar;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "typeDePermission", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List <DemandeDePermission> demandeDePermissions = new ArrayList<>();
 
