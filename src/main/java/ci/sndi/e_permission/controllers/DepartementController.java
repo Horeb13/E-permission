@@ -24,7 +24,9 @@ public class DepartementController {
     }
 
     @PostMapping
-    public Departement createDepartement(@RequestBody Departement departement) {
+    public Departement createDepartement(@RequestBody  Departement departement) {
+        
+
         return departementService.createDepartement(departement);
     }
 

@@ -1,0 +1,68 @@
+[
+    {
+        "nom" : "DIRECTION GENERALE",
+        "code" : "DG",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "DIRECTION GENERALE ADJOINTE",
+        "code" : "DGA",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction de l'Audit et de la Qualité",
+        "code" : "AIQ",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction Financière et comptable",
+        "code" : "DFC",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction de la Gestion des projets",
+        "code" : "DGP",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction des Etudes et de l'Ingénerie",
+        "code" : "DEI",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction du Réseau et de l'Exploitation",
+        "code" : "DRE",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Centre de Formation SNDI",
+        "code" : "CFS",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction des Affaires Générales",
+        "code" : "DAG",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction des Ressources Humaines",
+        "code" : "DRH",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    },
+    {
+        "nom" : "Direction Commerciale et Marketing",
+        "code" : "DCM",
+        "modidiePar" : "",
+        "dateCreation" : "2024-07-01T12:00:00.000Z"
+    }
+]

@@ -29,6 +29,8 @@ public class DirectionService {
         return directionRepository.findById(id);
     }
 
+    
+
     public Direction updateDirection(Long id, Direction directionDetails) {
         Direction direction = directionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Direction non trouvée avec l'ID : " + id));

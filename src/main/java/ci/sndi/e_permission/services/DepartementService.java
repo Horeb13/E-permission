@@ -20,13 +20,15 @@ public class DepartementService {
         return departementRepository.findAll();
     }
 
-    public Departement createDepartement(Departement departement) {
+    public Departement createDepartement( Departement departement) {
         return departementRepository.save(departement);
     }
 
     public Optional<Departement> getDepartementById(Long id) {
         return departementRepository.findById(id);
     }
+
+    
 
     public Departement updateDepartement(Long id, Departement departementDetails) {
         Departement departement = departementRepository.findById(id)

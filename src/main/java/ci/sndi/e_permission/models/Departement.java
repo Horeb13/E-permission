@@ -40,6 +40,9 @@ public class Departement {
     @Column(name = "Nom_du_departement")
     private String nom;
 
+    @Column(name = "Code_departement")
+    private String code;
+
     @Column(name = "DATE_CREATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;

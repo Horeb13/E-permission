@@ -38,6 +38,9 @@ public class Direction {
     @Column(name = "Nom_de_la_direction")
     private String nom;
 
+    @Column(name = "Code_Direction")
+    private String code;
+
     @Column(name = "DATE_CREATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;

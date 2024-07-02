@@ -23,8 +23,12 @@ public class DirectionController {
     }
 
     @PostMapping
-    public Direction createDirection(@RequestBody Direction direction) {
-        return directionService.createDirection(direction);
+    public ResponseEntity<Object> createDirection(@RequestBody List <Direction> directions) {
+        for (Direction direction : directions) {
+            directionService.createDirection(direction);
+        }
+
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
