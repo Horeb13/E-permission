@@ -33,4 +33,4 @@ build/
 .vscode/
 
 
-/home/horeb/Documents/E-Permission/src/main/resources/application.properties
+/src/main/resources/application.properties
