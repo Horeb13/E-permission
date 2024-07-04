@@ -10,15 +10,11 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 import java.util.Set;
 
 
@@ -29,7 +25,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "ROLE")
-public class Role {
+public class Role extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_ROLE")
@@ -38,16 +34,6 @@ public class Role {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    @Column(name = "DATE_CREATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation;
-
-    @Column(name = "DATE_MODIFICATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModification;
-
-    @Column(name = "MODIFIE_PAR")
-    private String modifiePar;
 
     @ManyToMany
     @JoinTable(

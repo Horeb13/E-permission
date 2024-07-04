@@ -7,6 +7,7 @@ import ci.sndi.e_permission.repositories.DirectionRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class DepartementService {
         Direction direction = directionRepository.findById(idDirection)
                                 .orElseThrow(() -> new IllegalArgumentException("Direction non trouvé avec l'ID : " + idDirection));;
         departement.setDirection(direction);
-        
+
         return departementRepository.save(departement);
     }
 
@@ -37,7 +38,6 @@ public class DepartementService {
         return departementRepository.findById(id);
     }
 
-    
 
     public Departement updateDepartement(Long id, Departement departementDetails) {
         Departement departement = departementRepository.findById(id)
@@ -45,7 +45,9 @@ public class DepartementService {
 
         departement.setNom(departementDetails.getNom());
         departement.setDirection(departementDetails.getDirection());
-        // Mettez à jour d'autres champs selon vos besoins
+        departement.setCode(departementDetails.getCode());
+        departement.setModifiePar(departementDetails.getModifiePar());
+
 
         return departementRepository.save(departement);
     }

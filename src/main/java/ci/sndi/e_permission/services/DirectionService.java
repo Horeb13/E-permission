@@ -12,7 +12,6 @@ public class DirectionService {
 
     private final DirectionRepository directionRepository;
 
-  
     public DirectionService(DirectionRepository directionRepository) {
         this.directionRepository = directionRepository;
     }
@@ -29,14 +28,14 @@ public class DirectionService {
         return directionRepository.findById(id);
     }
 
-    
 
     public Direction updateDirection(Long id, Direction directionDetails) {
         Direction direction = directionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Direction non trouvée avec l'ID : " + id));
 
         direction.setNom(directionDetails.getNom());
-        // Mettez à jour d'autres champs selon vos besoins
+        direction.setCode(directionDetails.getCode());
+        direction.setModifiePar(directionDetails.getModifiePar());
 
         return directionRepository.save(direction);
     }

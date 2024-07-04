@@ -5,15 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 
 
 @Data
@@ -23,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "ACTION_PRIVILEGE")
-public class ActionPrivilege {
+public class ActionPrivilege extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_ACTION_PRIVILEGE")
@@ -32,18 +29,6 @@ public class ActionPrivilege {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    @Column(name = "DATE_MODIFICATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModification;
-
-    @Column(name = "MODIFIER_PAR")
-    private String modifiePar;
-
-    @Column(name = "DATE_CREATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation;
-
-    
 
     // Getters and setters
 }

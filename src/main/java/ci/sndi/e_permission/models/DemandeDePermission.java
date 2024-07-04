@@ -24,7 +24,7 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "Demande_de_permission")
-public class DemandeDePermission {
+public class DemandeDePermission extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_demande")
@@ -40,17 +40,6 @@ public class DemandeDePermission {
     @Column(name = "date_de_debut")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
-
-    @Column(name = "DATE_CREATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation;
-
-    @Column(name = "DATE_MODIFICATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModification;
-
-    @Column(name = "MODIFIE_PAR")
-    private String modifiePar;
 
     @ManyToOne
     @JoinColumn(name = "Id_STATUT", nullable = false)

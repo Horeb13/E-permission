@@ -6,16 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
-
 
 @Data
 @Entity
@@ -24,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "TYPE_ROLE")
-public class TypeRole {
+public class TypeRole extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_TYPE_ROLE")
@@ -33,18 +28,6 @@ public class TypeRole {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    @Column(name = "DATE_CREATION")
-    @Temporal(TemporalType.DATE)
-    private Date dateCreation;
-
-    @Column(name = "DATE_MODIFICATION")
-    @Temporal(TemporalType.DATE)
-    private Date dateModification;
-
-    @Column(name = "MODIFIE_PAR")
-    private String modifiePar;
-
-    
 
     // Getters and setters
 }
