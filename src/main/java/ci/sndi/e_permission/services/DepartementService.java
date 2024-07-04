@@ -1,7 +1,10 @@
 package ci.sndi.e_permission.services;
 
 import ci.sndi.e_permission.models.Departement;
+import ci.sndi.e_permission.models.Direction;
 import ci.sndi.e_permission.repositories.DepartementRepository;
+import ci.sndi.e_permission.repositories.DirectionRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,16 +14,22 @@ import java.util.Optional;
 public class DepartementService {
 
     private final DepartementRepository departementRepository;
+    private final DirectionRepository directionRepository;
 
-    public DepartementService(DepartementRepository departementRepository) {
+    public DepartementService(DepartementRepository departementRepository, DirectionRepository directionRepository) {
         this.departementRepository = departementRepository;
+        this.directionRepository = directionRepository;
     }
 
     public List<Departement> getAllDepartements() {
         return departementRepository.findAll();
     }
 
-    public Departement createDepartement( Departement departement) {
+    public Departement createDepartement( Departement departement, Long idDirection) {
+        Direction direction = directionRepository.findById(idDirection)
+                                .orElseThrow(() -> new IllegalArgumentException("Direction non trouvé avec l'ID : " + idDirection));;
+        departement.setDirection(direction);
+        
         return departementRepository.save(departement);
     }
 

@@ -23,11 +23,11 @@ public class DepartementController {
         return departementService.getAllDepartements();
     }
 
+    
     @PostMapping
-    public Departement createDepartement(@RequestBody  Departement departement) {
-        
+    public Departement createDepartement(@RequestBody Departement departement ) {
 
-        return departementService.createDepartement(departement);
+        return departementService.createDepartement(departement, departement.getDirection().getId());
     }
 
     @GetMapping("/{id}")
