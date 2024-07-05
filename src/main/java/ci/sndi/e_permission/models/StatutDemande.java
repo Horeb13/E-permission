@@ -35,6 +35,4 @@ public class StatutDemande {
     private String libelle;
 
 
-
-    // Getters and setters
 }

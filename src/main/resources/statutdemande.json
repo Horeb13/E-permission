@@ -1,0 +1,24 @@
+[
+    {
+        "libelle" : "en attente",
+        "code": "AT"
+    },
+    {
+        "libelle" : "en cours",
+        "code": "CO"
+    },
+    {
+        "libelle" : "reporté",
+        "code": "RP"
+
+    },
+    {
+        "libelle" : "validé",
+        "code" : "VA"
+    },
+    {
+        "libelle" : "rejeté",
+        "code" : "RJ"
+    }
+
+]

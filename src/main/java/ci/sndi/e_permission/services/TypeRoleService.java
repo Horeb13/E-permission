@@ -33,8 +33,6 @@ public class TypeRoleService {
                 .orElseThrow(() -> new IllegalArgumentException("TypeRole not found"));
 
         typeRole.setLibelle(typeRoleDetails.getLibelle());
-        typeRole.setDateCreation(typeRoleDetails.getDateCreation());
-        typeRole.setDateModification(typeRoleDetails.getDateModification());
         typeRole.setModifiePar(typeRoleDetails.getModifiePar());
 
         return typeRoleRepository.save(typeRole);

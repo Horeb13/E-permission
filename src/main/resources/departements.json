@@ -1,0 +1,154 @@
+[
+    {
+        "nom" : "Département de l'Audit Interne",
+        "code" : "DAI",
+        "modidiePar" : "",
+        "direction":{
+            "id":9
+        }
+    },
+    {
+        "nom" : "Département de la Qualité",
+        "code" : "DQL",
+        "modidiePar" : "",
+        "direction":{
+            "id":9
+        }
+    },
+    {
+        "nom" : "Département Finance et Trésorerie",
+        "code" : "DFT",
+        "modidiePar" : "",
+        "direction":{
+            "id":10
+        }
+    },
+    {
+        "nom" : "Département Comptabilité et Reporting",
+        "code" : "DCR",
+        "modidiePar" : "",
+        "direction":{
+            "id":10
+        }
+    },
+    {
+        "nom" : "Département Budget et Contrôle de Gestion",
+        "code" : "BCG",
+        "modidiePar" : "",
+        "direction":{
+            "id":10
+        }
+    },
+    {
+        "nom" : "Pool des Chefs de programme et des Chefs de Projets ",
+        "code" : "",
+        "modidiePar" : "",
+        "direction":{
+            "id":11
+        }
+    },
+    {
+        "nom" : "Département Génie Logiciel",
+        "code" : "DGL",
+        "modidiePar" : "",
+        "direction":{
+            "id":12
+        }
+    },
+    {
+        "nom" : "Département Etude et Organisation ",
+        "code" : "DEO",
+        "modidiePar" : "",
+        "direction":{
+            "id":12
+        }
+    },
+    {
+        "nom" : "Département Exploitation ",
+        "code" : "DXP",
+        "modidiePar" : "",
+        "direction":{
+            "id":13
+        }
+    },
+    {
+        "nom" : "Département Réseaux et Télécoms",
+        "code" : "DRT",
+        "modidiePar" : "",
+        "direction":{
+            "id":13
+        }
+    },
+    {
+        "nom" : "Département Vielle Technologique et Cybersécurité",
+        "code" : "VTC",
+        "modidiePar" : "",
+        "direction":{
+            "id":13
+        }
+    },
+    {
+        "nom" : "Département Semin. Session de Formation",
+        "code" : "DSF",
+        "modidiePar" : "",
+        "direction":{
+            "id":14
+        }
+    },
+    {
+        "nom" : "Département Programme de Formation",
+        "code" : "DPF",
+        "modidiePar" : "",
+        "direction":{
+            "id":14
+        }
+    },
+    {
+        "nom" : "Département Juridique Documentaire",
+        "code" : "DJD",
+        "modidiePar" : "",
+        "direction":{
+            "id":15
+        }
+    },
+    {
+        "nom" : "Département Logistique et Patrimoine",
+        "code" : "DLP",
+        "modidiePar" : "",
+        "direction":{
+            "id":15
+        }
+    },
+    {
+        "nom" : "Département Administration Personnel",
+        "code" : "DAP",
+        "modidiePar" : "",
+        "direction":{
+            "id":16
+        }
+    },
+    {
+        "nom" : "Département Développement Ressources Humaines",
+        "code" : "DDR",
+        "modidiePar" : "",
+        "direction":{
+            "id":16
+        }
+    },
+    {
+        "nom" : "Département Marketion Communication",
+        "code" : "DML",
+        "modidiePar" : "",
+        "direction":{
+            "id":17
+        }
+    },
+    {
+        "nom" : "Département Commercial",
+        "code" : "DCL",
+        "modidiePar" : "",
+        "direction":{
+            "id":17
+        }
+    }
+]

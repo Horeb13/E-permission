@@ -28,7 +28,7 @@ public class DirectionController {
             directionService.createDirection(direction);
         }
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/{id}")

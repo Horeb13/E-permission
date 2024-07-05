@@ -1,0 +1,15 @@
+[
+    {
+        "libelle" : "lu",
+        "code": "L"
+    },
+    {
+        "libelle" : "non lu",
+        "code": "N"
+    },
+    {
+        "libelle" : "archivé",
+        "code": "A"
+
+    }
+]

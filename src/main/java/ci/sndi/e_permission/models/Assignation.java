@@ -26,7 +26,7 @@ public class Assignation extends Auditable {
 
     @EmbeddedId
     private AssignationId id;
-    
+
     @ManyToOne
     @JoinColumn(name = "Id_utilisateur", nullable = false)
     private Utilisateur utilisateur;
@@ -43,7 +43,6 @@ public class Assignation extends Auditable {
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 
-    
 
     // Getters and setters
 }

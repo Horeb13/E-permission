@@ -34,6 +34,5 @@ public class Direction extends Auditable {
     @Column(name = "Code_Direction")
     private String code;
 
-
     // Getters and setters
 }
