@@ -45,7 +45,7 @@ public class Departement {
 
     @Column(name = "DATE_CREATION")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation;
+    private Date dateCreation = new Date();
 
     @Column(name = "DATE_MODIFICATION")
     @Temporal(TemporalType.TIMESTAMP)
