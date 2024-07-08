@@ -1,0 +1,15 @@
+[
+    {
+        "libelle" : "Manager"
+    },
+    {
+        "libelle" : "Standard"
+    },
+    {
+        "libelle" : "Admin"
+    },
+    {
+        "libelle" : "Super Admin"
+    }
+
+]

@@ -2,6 +2,9 @@ package ci.sndi.e_permission.services;
 
 import ci.sndi.e_permission.models.DemandeDePermission;
 import ci.sndi.e_permission.repositories.DemandeDePermissionRepository;
+import ci.sndi.e_permission.repositories.TypeDePermissionRepository;
+import ci.sndi.e_permission.repositories.UtilisateurRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +13,16 @@ import java.util.Optional;
 @Service
 public class DemandeDePermissionService {
 
+    
     private final DemandeDePermissionRepository demandeDePermissionRepository;
+    private final UtilisateurRepository utilisateurRepository;
+    private final TypeDePermissionRepository typeDePermissionRepository;
 
 
-    public DemandeDePermissionService(DemandeDePermissionRepository demandeDePermissionRepository) {
+    public DemandeDePermissionService(DemandeDePermissionRepository demandeDePermissionRepository, UtilisateurRepository utilisateurRepository, TypeDePermissionRepository typeDePermissionRepository) {
         this.demandeDePermissionRepository = demandeDePermissionRepository;
+        this.utilisateurRepository = utilisateurRepository;
+        this.typeDePermissionRepository = typeDePermissionRepository;
     }
 
     public List<DemandeDePermission> getAllDemandeDePermissions() {

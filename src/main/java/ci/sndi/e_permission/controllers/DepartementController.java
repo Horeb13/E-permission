@@ -23,11 +23,14 @@ public class DepartementController {
         return departementService.getAllDepartements();
     }
 
-    @PostMapping
-    public Departement createDepartement(@RequestBody  Departement departement) {
-        
 
-        return departementService.createDepartement(departement);
+    @PostMapping
+    public ResponseEntity<Object> createDepartement(@RequestBody List <Departement> departements ) {
+        for (Departement departement : departements) {
+            departementService.createDepartement(departement, departement.getDirection().getId());
+        }
+
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/{id}")

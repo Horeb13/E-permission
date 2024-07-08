@@ -24,8 +24,11 @@ public class UtilisateurController {
     }
 
     @PostMapping
-    public Utilisateur createUtilisateur(@RequestBody Utilisateur utilisateur) {
-        return utilisateurService.createUtilisateur(utilisateur);
+    public ResponseEntity<Object> createUtilisateur(@RequestBody List <Utilisateur> utilisateurs) {
+        for (Utilisateur utilisateur : utilisateurs) {
+            utilisateurService.createUtilisateur(utilisateur);
+        }
+        return ResponseEntity.status(201).build() ;
     }
 
     @GetMapping("/{id}")

@@ -1,14 +1,10 @@
 package ci.sndi.e_permission.models;
-import java.util.ArrayList;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,9 +32,6 @@ public class StatutNotification {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
-    @Builder.Default
-    private List < Notification > notifications =  new ArrayList<>();
 
     // Getters and setters
 }

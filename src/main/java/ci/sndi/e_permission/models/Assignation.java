@@ -22,11 +22,11 @@ import java.util.Date;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "ASSIGNATION")
-public class Assignation {
+public class Assignation extends Auditable {
 
     @EmbeddedId
     private AssignationId id;
-    
+
     @ManyToOne
     @JoinColumn(name = "Id_utilisateur", nullable = false)
     private Utilisateur utilisateur;
@@ -43,16 +43,6 @@ public class Assignation {
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 
-    @Column(name = "DATE_CREATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation;
-
-    @Column(name = "DATE_MODIFICATION")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModification;
-
-    @Column(name = "MODIFIE_PAR")
-    private String modifiePar;
 
     // Getters and setters
 }

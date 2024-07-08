@@ -23,8 +23,11 @@ public class TypeRoleController {
     }
 
     @PostMapping
-    public TypeRole createTypeRole(@RequestBody TypeRole typeRole) {
-        return typeRoleService.createTypeRole(typeRole);
+    public ResponseEntity<Object> createTypeRole(@RequestBody List <TypeRole> typeRoles) {
+        for (TypeRole typeRole : typeRoles) {
+            typeRoleService.createTypeRole(typeRole);
+        }
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/{id}")

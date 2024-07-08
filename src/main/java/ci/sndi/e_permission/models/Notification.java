@@ -49,5 +49,4 @@ public class Notification {
     @JoinColumn(name = "Id_utilisateur", nullable = false)
     private Utilisateur utilisateur;
 
-    // Getters and setters
 }
