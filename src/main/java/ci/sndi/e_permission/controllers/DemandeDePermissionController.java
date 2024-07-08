@@ -13,7 +13,7 @@ public class DemandeDePermissionController {
 
     private final DemandeDePermissionService demandeDePermissionService;
 
-   
+
     public DemandeDePermissionController(DemandeDePermissionService demandeDePermissionService) {
         this.demandeDePermissionService = demandeDePermissionService;
     }

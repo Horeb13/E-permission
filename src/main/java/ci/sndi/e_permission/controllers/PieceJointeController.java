@@ -23,8 +23,10 @@ public class PieceJointeController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createPieceJointe(@RequestBody PieceJointe pieceJointe) {
-        pieceJointeService.createPieceJointe(pieceJointe);
+    public ResponseEntity<Object> createPieceJointe(@RequestBody List <PieceJointe> pieceJointes) {
+        for (PieceJointe pieceJointe : pieceJointes) {
+            pieceJointeService.createPieceJointe(pieceJointe);
+        }
         return ResponseEntity.status(201).build();
     }
 

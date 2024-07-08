@@ -23,8 +23,11 @@ public class TypeDePermissionController {
     }
 
     @PostMapping
-    public TypeDePermission createTypeDePermission(@RequestBody TypeDePermission typeDePermission) {
-        return typeDePermissionService.createTypeDePermission(typeDePermission);
+    public ResponseEntity<Object> createTypeDePermission(@RequestBody List <TypeDePermission> typeDePermissions) {
+        for (TypeDePermission typeDePermission : typeDePermissions) {
+            typeDePermissionService.createTypeDePermission(typeDePermission);
+        }
+        return ResponseEntity.status(201).build() ;
     }
 
     @GetMapping("/{id}")

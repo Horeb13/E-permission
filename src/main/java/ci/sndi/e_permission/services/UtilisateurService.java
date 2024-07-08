@@ -3,8 +3,6 @@ package ci.sndi.e_permission.services;
 import ci.sndi.e_permission.models.Utilisateur;
 import ci.sndi.e_permission.repositories.UtilisateurRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +35,6 @@ public class UtilisateurService {
         utilisateur.setPrenom(utilisateurDetails.getPrenom());
         utilisateur.setEmail(utilisateurDetails.getEmail());
         utilisateur.setMotDePasse(utilisateurDetails.getMotDePasse());
-        utilisateur.setDateModification(new Date());
         utilisateur.setModifiePar(utilisateurDetails.getModifiePar());
 
         return utilisateurRepository.save(utilisateur);

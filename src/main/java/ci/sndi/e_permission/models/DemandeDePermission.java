@@ -53,7 +53,6 @@ public class DemandeDePermission extends Auditable {
     @JoinColumn(name = "Id_utilisateur",  nullable = false)
     private Utilisateur utilisateur;
 
-    
 
     // Getters and setters
 }
