@@ -37,6 +37,11 @@ public class DepartementService {
         return departementRepository.findById(id);
     }
 
+    public Departement getDepartementByCode(String code){
+        return departementRepository.findByCode(code)
+            .orElseThrow(() -> new IllegalArgumentException("Departement non trouvé avec le code : " + code));
+    }
+
 
     public Departement updateDepartement(Long id, Departement departementDetails) {
         Departement departement = departementRepository.findById(id)

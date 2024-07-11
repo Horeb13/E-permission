@@ -1,0 +1,10 @@
+[
+    {
+        "nom":"Assanvo",
+        "prenom":"Horeb",
+        "email":"yanndeliassanvo@gmail.com",
+        "motDePasse":"12345678",
+        "departement":"DGL",
+        "roles":["standard1"]
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "libelle":"Directeur",
+        "typeRole":{"id": 1}
+    },
+    {
+        "libelle":"standard1",
+        "typeRole":{"id": 2}
+    },
+    {
+        "libelle":"Administrateur",
+        "typeRole":{"id": 3}
+    },
+    {
+        "libelle":"SuperAdministrateur",
+        "typeRole":{"id": 4}
+    }
+]

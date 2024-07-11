@@ -1,0 +1,52 @@
+[
+    {
+        "nom": "Mariage du travailleur",
+        "description": "",
+        "duree": 4
+    },
+    {
+        "nom": "Mariage d'un de ses enfants, d'un frère, d'une soeur",
+        "description": "",
+        "duree": 2
+    },
+    {
+        "nom": "Décès du conjoint",
+        "description": "",
+        "duree": 5
+    },
+    {
+        "nom": "Décès d'un enfant, du père, de la mère du travailleur",
+        "description": "",
+        "duree": 5
+    },
+    {
+        "nom": "Décès d'un frère ou d'une soeur",
+        "description": "",
+        "duree": 2
+    },
+    {
+        "nom": "Décès d'un beau père ou d'une elle mère",
+        "description": "",
+        "duree": 2
+    },
+    {
+        "nom": "Naissance d'un enfant",
+        "description": "",
+        "duree": 2
+    },
+    {
+        "nom": "Baptême d'un enfant",
+        "description": "",
+        "duree": 1
+    },
+    {
+        "nom": "Première communion d'un enfant",
+        "description": "",
+        "duree": 1
+    },
+    {
+        "nom": "Demenagement",
+        "description": "",
+        "duree": 1
+    }
+]

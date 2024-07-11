@@ -1,9 +1,10 @@
 package ci.sndi.e_permission.models;
+
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -12,8 +13,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import java.util.Date;
-
 
 @Data
 @Entity
@@ -27,14 +26,6 @@ public class Assignation extends Auditable {
     @EmbeddedId
     private AssignationId id;
 
-    @ManyToOne
-    @JoinColumn(name = "Id_utilisateur", nullable = false)
-    private Utilisateur utilisateur;
-
-    @ManyToOne
-    @JoinColumn(name = "Id_ROLE", nullable = false)
-    private Role role;
-
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -43,8 +34,5 @@ public class Assignation extends Auditable {
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 
-
     // Getters and setters
 }
-
-

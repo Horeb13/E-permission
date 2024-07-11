@@ -1,13 +1,11 @@
 package ci.sndi.e_permission.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @MappedSuperclass
 public abstract class Auditable {
     

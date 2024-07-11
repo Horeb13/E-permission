@@ -1,10 +1,14 @@
 package ci.sndi.e_permission.models;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,6 +29,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "Utilisateur")
 public class Utilisateur extends Auditable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_utilisateur")
@@ -46,6 +51,17 @@ public class Utilisateur extends Auditable {
     @JoinColumn(name = "Id_Departement", nullable = false)
     private Departement departement;
 
+    @Column(nullable = false)
+    private boolean enabled;
 
-    // Getters and setters
+    @ManyToMany
+    @JoinTable(
+        name = "ASSIGNATION",
+        joinColumns = @JoinColumn(name = "id_utilisateur"),
+        inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+    private Set<Role> roles;
+
+
+        // Getters and setters
 }

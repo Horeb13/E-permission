@@ -39,7 +39,6 @@ public class Departement extends Auditable {
     @JoinColumn(name = "Id_Direction", nullable = false)
     private Direction direction;
 
-    
 
     // Getters and setters
 }

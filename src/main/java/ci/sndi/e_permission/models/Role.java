@@ -1,13 +1,12 @@
 package ci.sndi.e_permission.models;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,33 +14,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import java.util.Set;
 
 
-@Data
-@Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Data // Génère automatiquement les getters, setters, toString, equals, et hashCode pour les champs de la classe en utilisant Lombok.
+@Entity //Indique que cette classe est une entité JPA, ce qui signifie qu'elle sera mappée à une table de base de données.
+@Builder //Génère un constructeur de style builder en utilisant Lombok.
+@NoArgsConstructor //Génère un constructeur sans arguments en utilisant Lombok.
+@AllArgsConstructor //Génère un constructeur avec un argument pour chaque champ en utilisant Lombok.
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "ROLE")
+@Table(name = "ROLE") //Spécifie le nom de la table dans la base de données à laquelle cette entité est mappée.
 public class Role extends Auditable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_ROLE")
+    @Id //Indique que ce champ est la clé primaire de l'entité.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Spécifie que la valeur de la clé primaire est générée automatiquement par la base de données.
+    @Column(name = "Id_ROLE") //Spécifie le nom de la colonne dans la table de la base de données correspondant à ce champ.
     private Long id;
 
     @Column(name = "LIBELLE")
     private String libelle;
 
 
-    @ManyToMany
-    @JoinTable(
-        name = "ASSIGNATION",
-        joinColumns = @JoinColumn(name = "Id_ROLE"),
-        inverseJoinColumns = @JoinColumn(name = "Id_utilisateur")
-    )
-    private Set<Utilisateur> utilisateurs;
 
     @ManyToOne
     @JoinColumn(name = "Id_ROLE_1", nullable = true)
@@ -52,5 +44,7 @@ public class Role extends Auditable {
     private TypeRole typeRole;
 
 
-    // Getters and setters
+
+
 }
+
