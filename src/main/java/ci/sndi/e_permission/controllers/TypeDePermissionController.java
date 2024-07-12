@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/typedpermissions")
+@RequestMapping("/api/typedepermissions")
 public class TypeDePermissionController {
 
     private final TypeDePermissionService typeDePermissionService;
