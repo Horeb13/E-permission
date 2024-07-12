@@ -1,11 +1,9 @@
 package ci.sndi.e_permission.security.service;
 
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,86 +23,76 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserPrinciple implements UserDetails {
 
-	private Long id;
+    private Long id;
+    private String name;
+    private String email;
+    private Collection<? extends GrantedAuthority> authorities;
 
-	private String name;
+    @JsonIgnore
+    private String password;
 
-	private String email;
+    // public UserPrinciple(Long id, String name, String email, Collection<? extends GrantedAuthority> authorities, String password) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.email = email;
+    //     this.password = password;
+    //     this.authorities = authorities;
+    // }
 
-	private Collection<? extends GrantedAuthority> authorities;
+    public static UserDetails build(Utilisateur user) {
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getLibelle()))
+                .collect(Collectors.toList());
 
-	@JsonIgnore
-	private String password;
+        String name = user.getNom() + " " + user.getPrenom();
+        return new UserPrinciple(user.getId(), name, user.getEmail(), authorities, user.getMotDePasse());
+    }
 
-	public UserPrinciple(long id, String name, String username, List<GrantedAuthority> authorities, String password) {
-		this.id = id;
-		this.name = name;
-		this.email = username;
-		this.password = password;
-		this.authorities = authorities;
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
 
-	public static UserDetails build(Utilisateur user) {
-		List<GrantedAuthority> authorities = Stream.of(user.getRoles())
-				.map(role -> new SimpleGrantedAuthority(role.toString()))
-				.collect(Collectors.toList());
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
-		String name = user.getNom() + " " + user.getPrenom();
-		return new UserPrinciple(user.getId(), name, user.getEmail(), authorities,
-				user.getMotDePasse());
-	}
+    @Override
+    public String getUsername() {
+        return email;
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.authorities;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public String getPassword() {
-		return password;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-	@Override
-	public String getUsername() {
-		return email;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserPrinciple user = (UserPrinciple) o;
+        return Objects.equals(id, user.id);
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-
-		UserPrinciple user = (UserPrinciple) o;
-
-		return Objects.equals(id, user.id);
-
-	}
-
-	//
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

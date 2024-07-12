@@ -28,52 +28,59 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-	private final CreateAccountService accountService;
-	private final AuthenticationManager authenticationManager;
-	private final TokenProvider tokenProvider;
+    private final CreateAccountService accountService;
+    private final AuthenticationManager authenticationManager;
+    private final TokenProvider tokenProvider;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
+    @PostMapping("/signUp")
+    public ResponseEntity<Utilisateur> createAccount(@RequestBody @Valid final SignUpForm signUpForm,
+            BindingResult bindingResult) {
+        if (signUpForm.getNom() == null || signUpForm.getPrenom() == null || signUpForm.getEmail() == null) {
+            throw new IllegalArgumentException("Les champs nom, prénom et email ne peuvent pas être nuls.");
+        }
 
-	@PostMapping("/signUp")
-	public ResponseEntity<Utilisateur> createAccount(@RequestBody @Valid final SignUpForm signUpForm,
-			BindingResult bindingResult) {
-				if (signUpForm.getNom() == null || signUpForm.getPrenom() == null || signUpForm.getEmail() == null) {
-					throw new IllegalArgumentException("Les champs nom, prénom et email ne peuvent pas être nuls.");
-				}
-				
+        LOGGER.info("Account creation - User: {}", signUpForm.getNom().concat(" ").concat(signUpForm.getPrenom()));
 
-		LOGGER.info("Account creation - User: {}",
-				signUpForm.getNom().concat(" ").concat(signUpForm.getPrenom()));
+        HttpRequestUtil.checkBindingResult(bindingResult);
+        Utilisateur u = this.accountService.createAccount(signUpForm);
 
-		HttpRequestUtil.checkBindingResult(bindingResult);
-		Utilisateur u = this.accountService.createAccount(signUpForm);
+        LOGGER.info("Account creation - Account {} created successfully ", signUpForm.getEmail());
 
-		LOGGER.info("Account creation - Account {} created successfully ", signUpForm.getEmail());
+        return new ResponseEntity<>(u, HttpStatus.CREATED);
+    }
 
-		return new ResponseEntity<>(u, HttpStatus.CREATED);
-	}
+    @PostMapping("/signIn")
+    public ResponseEntity<Object> login(@RequestBody @Valid LoginForm loginForm, BindingResult bindingResult) {
 
-	@PostMapping("/signIn")
-	public ResponseEntity<Object> login(@RequestBody @Valid LoginForm loginForm, BindingResult bindingResult) {
+        LOGGER.info("User login - Connecting user {}", loginForm.getEmail());
 
-		LOGGER.info("User login - Connecting user {}", loginForm.getEmail());
+        HttpRequestUtil.checkBindingResult(bindingResult);
+        Authentication authentication = authenticationManager
+                .authenticate(
+                        new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword()));
 
-		HttpRequestUtil.checkBindingResult(bindingResult);
-		Authentication authentication = authenticationManager
-				.authenticate(
-						new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword()));
+        LOGGER.info("Authentication successful for user - {}", loginForm.getEmail());
 
-		LOGGER.info("Authentication successful for user - {}", loginForm.getEmail());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = tokenProvider.generateToken(authentication);
 
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String token = tokenProvider.generateToken(authentication);
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.AUTHORIZATION, token)
+                .body(authentication.getPrincipal());
+    }
 
-		return ResponseEntity
-				.ok()
-				.header(HttpHeaders.AUTHORIZATION, token)
-				.body(authentication.getPrincipal());
-	}
-
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            LOGGER.info("User logout - Disconnecting user {}", authentication.getName());
+            SecurityContextHolder.clearContext();
+        } else {
+            LOGGER.info("User logout - No user is currently authenticated.");
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
