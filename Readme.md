@@ -8,6 +8,9 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 # Configuration de Hibernate
 spring.jpa.hibernate.ddl-auto=update
 
+app.jwt.secretKey=mySecretKey
+app.jwt.expirationTime=10
+
 
 
 
