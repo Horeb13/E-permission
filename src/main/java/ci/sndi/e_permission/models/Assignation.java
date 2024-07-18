@@ -34,5 +34,7 @@ public class Assignation extends Auditable {
     @Temporal(TemporalType.DATE)
     private Date dateFin;
 
+    
+
     // Getters and setters
 }

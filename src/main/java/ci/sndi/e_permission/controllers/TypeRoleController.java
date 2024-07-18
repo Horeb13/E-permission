@@ -3,6 +3,7 @@ package ci.sndi.e_permission.controllers;
 import ci.sndi.e_permission.models.TypeRole;
 import ci.sndi.e_permission.services.TypeRoleService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/typeroles")
 public class TypeRoleController {
+    
     private final TypeRoleService typeRoleService;
 
     
@@ -18,11 +20,13 @@ public class TypeRoleController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_standard1')")
     public List<TypeRole> getAllTypeRoles() {
         return typeRoleService.getAllTypeRoles();
     }
 
     @PostMapping
+    //@PreAuthorize("hasRole('Directeur')")
     public ResponseEntity<Object> createTypeRole(@RequestBody List <TypeRole> typeRoles) {
         for (TypeRole typeRole : typeRoles) {
             typeRoleService.createTypeRole(typeRole);
@@ -30,6 +34,7 @@ public class TypeRoleController {
         return ResponseEntity.status(201).build();
     }
 
+    @PreAuthorize("hasRole('ROLE_standard1')")
     @GetMapping("/{id}")
     public ResponseEntity<TypeRole> getTypeRoleById(@PathVariable Long id) {
         TypeRole typeRole = typeRoleService.getTypeRoleById(id);

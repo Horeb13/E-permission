@@ -62,6 +62,7 @@ public class UserService implements IUserService {
             user.setMotDePasse(security.cryptPassword(request.getPassword()));
             user.setDepartement(departementService.getDepartementByCode(request.getDepartement()));
             user.setRoles(addRoleToSet());
+            user.setEnabled(true);
             user = repo.save(user);
         }
         return user;

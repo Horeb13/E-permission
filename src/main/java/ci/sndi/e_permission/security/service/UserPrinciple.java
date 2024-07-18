@@ -31,17 +31,11 @@ public class UserPrinciple implements UserDetails {
     @JsonIgnore
     private String password;
 
-    // public UserPrinciple(Long id, String name, String email, Collection<? extends GrantedAuthority> authorities, String password) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.email = email;
-    //     this.password = password;
-    //     this.authorities = authorities;
-    // }
+   
 
     public static UserDetails build(Utilisateur user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getLibelle()))
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getLibelle()))
                 .collect(Collectors.toList());
 
         String name = user.getNom() + " " + user.getPrenom();

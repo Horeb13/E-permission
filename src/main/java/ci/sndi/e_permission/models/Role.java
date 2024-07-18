@@ -8,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.PostPersist;
+import jakarta.persistence.PostUpdate;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,6 +45,23 @@ public class Role extends Auditable {
     @ManyToOne
     @JoinColumn(name = "Id_TYPE_ROLE", nullable = false)
     private TypeRole typeRole;
+
+    
+
+    // private boolean isStandard;
+    // private boolean isAdmin;
+    // private boolean isSuperAdmin;
+    // private boolean isManager;
+
+    // @PostLoad
+    // @PostPersist
+    // @PostUpdate
+    // private void init() {
+    //     this.isStandard = this.typeRole.getLibelle().equals("Standard");
+    //     this.isAdmin = this.typeRole.getLibelle().equals("Admin");
+    //     this.isSuperAdmin = this.typeRole.getLibelle().equals("Super Admin");
+    //     this.isManager = this.typeRole.getLibelle().equals("Manager");
+    // }
 
 
 

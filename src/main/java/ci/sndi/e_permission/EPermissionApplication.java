@@ -23,8 +23,4 @@ public class EPermissionApplication {
         return "hello world";
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "This is a test endpoint!";
-    }
 }

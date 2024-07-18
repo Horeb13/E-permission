@@ -11,6 +11,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.PostLoad;
+// import jakarta.persistence.PostPersist;
+// import jakarta.persistence.PostUpdate;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -63,6 +66,34 @@ public class Utilisateur extends Auditable {
     )
     private Set<Role> roles;
 
+    // private boolean isStandard ;
+    // private boolean isAdmin;
+    // private boolean isSuperAdmin;
+    // private boolean isManager;
+
+    // @PostLoad
+    // @PostPersist
+    // @PostUpdate
+    // private void init() {
+    //     for (Role role : roles) {
+    //         if (role.isStandard()) {
+    //             this.isStandard = true;
+    //             continue;
+    //         }
+    //         if (role.isAdmin()) {
+    //             this.isAdmin = true;
+    //             continue;
+    //         }
+    //         if (role.isSuperAdmin()) {
+    //             this.isSuperAdmin = true;
+    //             continue;
+    //         }
+    //         if (role.isManager()) {
+    //             this.isManager = true;
+    //             continue;
+    //         }
+    //     }
+    // }
 
         // Getters and setters
 }
