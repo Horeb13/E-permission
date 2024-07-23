@@ -9,12 +9,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ci.sndi.e_permission.dto.LoginResponse;
 import ci.sndi.e_permission.models.Utilisateur;
 import ci.sndi.e_permission.security.dto.LoginForm;
 import ci.sndi.e_permission.security.dto.SignUpForm;
@@ -63,13 +65,12 @@ public class AuthController {
 
         LOGGER.info("Authentication successful for user - {}", loginForm.getEmail());
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = tokenProvider.generateToken(authentication);
 
-        return ResponseEntity
-                .ok()
-                .header(HttpHeaders.AUTHORIZATION, token)
-                .body(authentication.getPrincipal());
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+         return ResponseEntity.ok(new LoginResponse(token, userDetails));
     }
 
     @PostMapping("/logout")
