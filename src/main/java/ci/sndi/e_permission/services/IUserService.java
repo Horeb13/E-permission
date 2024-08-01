@@ -9,10 +9,5 @@ public interface IUserService {
 
     public Utilisateur findUser(Long id);
 
-    //public boolean isUserAcheter(Long idUser);
-
-    //public boolean isUserLivreur(Long idUser);
-
-    //public boolean isUserVendeur(Long idUser);
 
 }
