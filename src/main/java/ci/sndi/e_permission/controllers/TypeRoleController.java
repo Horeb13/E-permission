@@ -20,7 +20,7 @@ public class TypeRoleController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_standard1')")
+    //@PreAuthorize("hasRole('ROLE_standard1')")
     public List<TypeRole> getAllTypeRoles() {
         return typeRoleService.getAllTypeRoles();
     }

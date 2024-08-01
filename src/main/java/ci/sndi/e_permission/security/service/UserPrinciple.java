@@ -30,6 +30,7 @@ public class UserPrinciple implements UserDetails {
 
     @JsonIgnore
     private String password;
+    private String departement;
 
    
 
@@ -39,7 +40,8 @@ public class UserPrinciple implements UserDetails {
                 .collect(Collectors.toList());
 
         String name = user.getNom() + " " + user.getPrenom();
-        return new UserPrinciple(user.getId(), name, user.getEmail(), authorities, user.getMotDePasse());
+        String departement = user.getDepartement().getNom();
+        return new UserPrinciple(user.getId(), name, user.getEmail(), authorities, user.getMotDePasse(), departement);
     }
 
     @Override

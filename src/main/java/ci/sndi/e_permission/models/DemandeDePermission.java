@@ -41,6 +41,9 @@ public class DemandeDePermission extends Auditable {
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "Id_STATUT", nullable = false)
     private StatutDemande statutDemande;

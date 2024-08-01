@@ -1,5 +1,6 @@
 package ci.sndi.e_permission.controllers;
 
+import ci.sndi.e_permission.dto.DemandeDePermissionDto;
 import ci.sndi.e_permission.models.DemandeDePermission;
 import ci.sndi.e_permission.services.DemandeDePermissionService;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/demande-de-permissions")
+@RequestMapping("/api/demandes")
 public class DemandeDePermissionController {
 
     private final DemandeDePermissionService demandeDePermissionService;
@@ -24,8 +25,8 @@ public class DemandeDePermissionController {
     }
 
     @PostMapping
-    public DemandeDePermission createDemandeDePermission(@RequestBody DemandeDePermission demandeDePermission) {
-        return demandeDePermissionService.createDemandeDePermission(demandeDePermission);
+    public DemandeDePermission createDemandeDePermission(@RequestBody DemandeDePermissionDto demandeDePermissionDto) {
+        return demandeDePermissionService.createDemandeDePermission(demandeDePermissionDto);
     }
 
     @GetMapping("/{id}")
