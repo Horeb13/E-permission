@@ -2,7 +2,10 @@ package ci.sndi.e_permission.controllers;
 
 import ci.sndi.e_permission.dto.DemandeDePermissionDto;
 import ci.sndi.e_permission.models.DemandeDePermission;
+import ci.sndi.e_permission.models.Utilisateur;
 import ci.sndi.e_permission.services.DemandeDePermissionService;
+import ci.sndi.e_permission.services.UserService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +16,12 @@ import java.util.List;
 public class DemandeDePermissionController {
 
     private final DemandeDePermissionService demandeDePermissionService;
+    private final UserService userService;
 
 
-    public DemandeDePermissionController(DemandeDePermissionService demandeDePermissionService) {
+    public DemandeDePermissionController(DemandeDePermissionService demandeDePermissionService, UserService userService) {
         this.demandeDePermissionService = demandeDePermissionService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -29,11 +34,20 @@ public class DemandeDePermissionController {
         return demandeDePermissionService.createDemandeDePermission(demandeDePermissionDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("all/{id}")
     public ResponseEntity<DemandeDePermission> getDemandeDePermissionById(@PathVariable Long id) {
         return demandeDePermissionService.getDemandeDePermissionById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{userId}") 
+    public ResponseEntity <DemandeDePermission> getDemandeDePermissionByUserId(@PathVariable Long userId){
+
+        Utilisateur user = userService.findById(userId);
+        return demandeDePermissionService.getDemandeDePermissionByUser(user)
+                                        .map(ResponseEntity::ok)
+                                        .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")

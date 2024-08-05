@@ -62,6 +62,10 @@ public class DemandeDePermissionService {
         return demandeDePermissionRepository.findById(id);
     }
 
+    public Optional<DemandeDePermission> getDemandeDePermissionByUser(Utilisateur utilisateur) {
+        return demandeDePermissionRepository.findByUtilisateur(utilisateur);
+    }
+
     public DemandeDePermission updateDemandeDePermission(Long id, DemandeDePermission demandeDePermissionDetails) {
         DemandeDePermission demandeDePermission = demandeDePermissionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("DemandeDePermission non trouvée avec l'ID : " + id));
