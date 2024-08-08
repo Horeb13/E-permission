@@ -72,9 +72,10 @@ public class DemandeDePermissionService {
 
         demandeDePermission.setDateDebut(demandeDePermissionDetails.getDateDebut());
         demandeDePermission.setDateFin(demandeDePermissionDetails.getDateFin());
-        demandeDePermission.setCommentaire(demandeDePermissionDetails.getCommentaire());
-        demandeDePermission.setUtilisateur(demandeDePermissionDetails.getUtilisateur());
-        demandeDePermission.setStatutDemande(demandeDePermissionDetails.getStatutDemande());
+        demandeDePermission.setDescription(demandeDePermissionDetails.getDescription());
+        //demandeDePermission.setCommentaire(demandeDePermissionDetails.getCommentaire());
+        //demandeDePermission.setUtilisateur(demandeDePermissionDetails.getUtilisateur());
+        //demandeDePermission.setStatutDemande(demandeDePermissionDetails.getStatutDemande());
         demandeDePermission.setTypeDePermission(demandeDePermissionDetails.getTypeDePermission());
         // Mettez à jour d'autres champs selon vos besoins
 
