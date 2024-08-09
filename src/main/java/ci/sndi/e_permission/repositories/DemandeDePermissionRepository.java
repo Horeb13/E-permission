@@ -1,5 +1,6 @@
 package ci.sndi.e_permission.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,6 @@ import ci.sndi.e_permission.models.Utilisateur;
 @Repository
 public interface DemandeDePermissionRepository extends JpaRepository <DemandeDePermission, Long>{
 
-    Optional <DemandeDePermission> findByUtilisateur(Utilisateur utilisateur);
+    List <DemandeDePermission> findByUtilisateur(Utilisateur utilisateur);
 
 }

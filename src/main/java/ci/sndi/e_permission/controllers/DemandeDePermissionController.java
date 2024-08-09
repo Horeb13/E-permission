@@ -41,13 +41,14 @@ public class DemandeDePermissionController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{userId}") 
-    public ResponseEntity <DemandeDePermission> getDemandeDePermissionByUserId(@PathVariable Long userId){
+    @GetMapping("/{userEmail}") 
+    public List <DemandeDePermission> getDemandeDePermissionByUser(@PathVariable String userEmail){
 
-        Utilisateur user = userService.findById(userId);
-        return demandeDePermissionService.getDemandeDePermissionByUser(user)
-                                        .map(ResponseEntity::ok)
-                                        .orElseGet(() -> ResponseEntity.notFound().build());
+        Utilisateur user = userService.findByEmail(userEmail).orElseThrow(
+            () -> new IllegalArgumentException("User not found with email: " + userEmail)
+        );
+        return demandeDePermissionService.getDemandeDePermissionByUser(user);
+                                       
     }
 
     @PutMapping("/{id}")

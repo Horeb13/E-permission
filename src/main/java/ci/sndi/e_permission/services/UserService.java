@@ -3,6 +3,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -28,6 +29,10 @@ public class UserService implements IUserService {
 
     public Utilisateur findUser(Long id) {
         return findById(id);
+    }
+
+    public Optional<Utilisateur> findByEmail(String email) {
+        return repo.findByEmail(email);
     }
 
     public Utilisateur findById(Long id) {

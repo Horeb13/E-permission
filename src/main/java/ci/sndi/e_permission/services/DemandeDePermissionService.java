@@ -62,7 +62,7 @@ public class DemandeDePermissionService {
         return demandeDePermissionRepository.findById(id);
     }
 
-    public Optional<DemandeDePermission> getDemandeDePermissionByUser(Utilisateur utilisateur) {
+    public List <DemandeDePermission> getDemandeDePermissionByUser(Utilisateur utilisateur) {
         return demandeDePermissionRepository.findByUtilisateur(utilisateur);
     }
 
