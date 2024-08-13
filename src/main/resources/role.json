@@ -4,6 +4,14 @@
         "typeRole":{"id": 1}
     },
     {
+        "libelle":"Chef de Departement",
+        "typeRole":{"id": 1}
+    },
+    {
+        "libelle":"Direction des Ressources Humaines",
+        "typeRole":{"id": 1}
+    },
+    {
         "libelle":"standard1",
         "typeRole":{"id": 2}
     },

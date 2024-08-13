@@ -39,19 +39,21 @@ public class UserService implements IUserService {
         return repo.findById(id).orElse(null);
     }
 
-    public Set<Role> addRoleToSet() {
-        // Initialize a set of roles
-        Set<Role> roles = new HashSet<>();
+    // public Set<Role> addRoleToSet(Set <String> userRoles) {
+    //     // Initialize a set of roles
+    //     Set<Role> roles = new HashSet<>();
     
-        // Get the role from roleService
-        Role role = roleService.getRoleByLibelle("standard1");
-    
-        // Add the retrieved role to the set
-        roles.add(role);
-    
-        // Now roles set contains the role retrieved from roleService
-        return roles;
-    }
+    //     // Get the role from roleService
+
+    //     userRoles.forEach(
+    //         userRole -> {
+    //             Role role = roleService.getRoleByLibelle(userRole);
+    //             roles.add(role);
+    //         }
+    //     );
+        
+    //     return roles;
+    // }
 
     @Override
     public Utilisateur createUser(SignUpForm request) {
@@ -66,7 +68,7 @@ public class UserService implements IUserService {
             user.setEmail(request.getEmail());
             user.setMotDePasse(security.cryptPassword(request.getPassword()));
             user.setDepartement(departementService.getDepartementByCode(request.getDepartement()));
-            user.setRoles(addRoleToSet());
+            user.setRoles(request.getRoles());
             user.setEnabled(true);
             user = repo.save(user);
         }
