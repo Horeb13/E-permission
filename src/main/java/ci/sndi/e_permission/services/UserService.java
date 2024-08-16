@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-
 import org.springframework.stereotype.Service;
 
-import ci.sndi.e_permission.models.Role;
 import ci.sndi.e_permission.models.Utilisateur;
+import ci.sndi.e_permission.repositories.RoleRepository;
 import ci.sndi.e_permission.repositories.UtilisateurRepository;
 import ci.sndi.e_permission.security.Security;
 import ci.sndi.e_permission.security.dto.SignUpForm;
+import ci.sndi.e_permission.models.Role;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -24,8 +24,8 @@ public class UserService implements IUserService {
     
     private final UtilisateurRepository repo;
     private final DepartementService departementService;
-    private final RoleService roleService;
     private final Security security;
+    private final RoleRepository roleRepository;
 
     public Utilisateur findUser(Long id) {
         return findById(id);
@@ -39,21 +39,23 @@ public class UserService implements IUserService {
         return repo.findById(id).orElse(null);
     }
 
-    // public Set<Role> addRoleToSet(Set <String> userRoles) {
-    //     // Initialize a set of roles
-    //     Set<Role> roles = new HashSet<>();
+    public Set<Role> addRoleToSet(Set <Long> userRoles) {
+        // Initialize a set of roles
+        Set<Role> roles = new HashSet<>();
     
-    //     // Get the role from roleService
+        // Get the role from roleService
 
-    //     userRoles.forEach(
-    //         userRole -> {
-    //             Role role = roleService.getRoleByLibelle(userRole);
-    //             roles.add(role);
-    //         }
-    //     );
+        userRoles.forEach(
+            userRole -> {
+                Role role = roleRepository.findById(userRole).orElseThrow(
+                    ()-> new IllegalStateException("Role not found " + userRole)
+                );
+                roles.add(role);
+            }
+        );
         
-    //     return roles;
-    // }
+        return roles;
+    }
 
     @Override
     public Utilisateur createUser(SignUpForm request) {
@@ -68,7 +70,9 @@ public class UserService implements IUserService {
             user.setEmail(request.getEmail());
             user.setMotDePasse(security.cryptPassword(request.getPassword()));
             user.setDepartement(departementService.getDepartementByCode(request.getDepartement()));
-            user.setRoles(request.getRoles());
+            user.setRoles(addRoleToSet(request.getRoles()));
+            log.info(request.getRoles().toString());
+            log.info(user.getRoles().toString());
             user.setEnabled(true);
             user = repo.save(user);
         }

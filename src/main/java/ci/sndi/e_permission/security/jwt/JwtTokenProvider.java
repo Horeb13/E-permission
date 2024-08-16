@@ -2,7 +2,7 @@ package ci.sndi.e_permission.security.jwt;
 import java.security.InvalidParameterException;
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +22,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.GrantedAuthority;
 
 @Component
 public class JwtTokenProvider implements TokenProvider {
@@ -64,6 +65,10 @@ public class JwtTokenProvider implements TokenProvider {
 		LOGGER.info("Genration of token for - {}", authentication.getPrincipal());
 
 		UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
+		 // Récupérer les authorities de l'utilisateur
+		 List<String> roles = userPrincipal.getAuthorities().stream()
+		 .map(GrantedAuthority::getAuthority)
+		 .toList(); 
 
 		Date exprirationTime = tokenExpirationTime();
 
@@ -71,7 +76,8 @@ public class JwtTokenProvider implements TokenProvider {
 
 		return Jwts
 				.builder()
-				.setSubject((userPrincipal.getUsername()))
+				.claim("roles", roles)
+				.setSubject((userPrincipal.getUsername() ))
 				.setIssuedAt(new Date())
 				.setExpiration(exprirationTime)
 				.signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -116,5 +122,7 @@ public class JwtTokenProvider implements TokenProvider {
 		return parseClaims(currentToken).getBody();
 	}
 
-}
+	
 
+
+}

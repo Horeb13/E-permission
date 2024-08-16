@@ -1,8 +1,6 @@
 package ci.sndi.e_permission.security.dto;
 
 import java.util.Set;
-
-import ci.sndi.e_permission.models.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -26,7 +24,7 @@ public final class SignUpForm {
     @Size(min = 3, max = 50, message = "Le prénom doit contenir entre 3 et 50 caractères.")
     private String prenom;
 
-    private Set<Role> roles;
+    private Set<Long> roles;
 
     @NotNull(message = "Le mot de passe ne peut pas être nul.")
     @NotEmpty(message = "Le mot de passe ne peut pas être vide.")

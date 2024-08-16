@@ -1,5 +1,7 @@
 package ci.sndi.e_permission.security.auth;
 
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,11 @@ public class AuthController {
         if (signUpForm.getNom() == null || signUpForm.getPrenom() == null || signUpForm.getEmail() == null) {
             throw new IllegalArgumentException("Les champs nom, prénom et email ne peuvent pas être nuls.");
         }
+
+        Set<Long> roles = signUpForm.getRoles();
+        roles.forEach(role -> {
+            LOGGER.info("Adding role {} to user {}", role);
+        });
 
         LOGGER.info("Account creation - User: {}", signUpForm.getNom().concat(" ").concat(signUpForm.getPrenom()));
 
